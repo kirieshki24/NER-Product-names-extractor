@@ -9,7 +9,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.core.os_manager import ChromeType
 from main import st
 
-@st.experimental_singleton
+@st.cache_resource
 def get_driver():
     # Set up Chrome options
     chrome_options = Options()

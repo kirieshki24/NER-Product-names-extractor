@@ -5,6 +5,17 @@ from selenium.webdriver.chrome.options import Options
 import csv
 import time
 from bs4 import BeautifulSoup
+from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.core.os_manager import ChromeType
+
+@st.cache_resource
+def get_driver():
+    return webdriver.Chrome(
+        service=Service(
+            ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()
+        ),
+        options=options,
+    )
 
 def body_content(html_content):
     soup = BeautifulSoup(html_content, 'html.parser')
@@ -58,8 +69,7 @@ def URL_parser(url: str) -> str:
     chrome_options.add_argument("--enable-unsafe-swiftshader")
 
     # Set up the Chrome driver
-    service = Service('C:/webdrivers/chromedriver-win64/chromedriver.exe')  # Specify the path to your chromedriver
-    driver = webdriver.Chrome(service=service, options=chrome_options)
+    driver = get_driver()
 
     try:
         driver.get(url)

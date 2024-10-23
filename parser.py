@@ -7,7 +7,7 @@ import time
 from bs4 import BeautifulSoup
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.core.os_manager import ChromeType
-import main
+from main import st
 
 @st.experimental_singleton
 def get_driver():

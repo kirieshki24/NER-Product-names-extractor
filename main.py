@@ -1,6 +1,7 @@
 import streamlit as st
 import parser
 import llama_model
+import subprocess
 
 def main():
     subprocess.run("libglib2.0-0=2.50.3-2 \

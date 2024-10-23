@@ -3,6 +3,7 @@ import parser
 import llama_model
 
 def main():
+    subprocess.run(args, capture_output=True, text=True)
     st.title("Product Scraper")
     urls = st.text_input("Enter a Website URLs: ")
 

@@ -9,24 +9,6 @@ from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.core.os_manager import ChromeType
 import main
 
-@st.cache_resource
-def get_driver():
-    # Set up Chrome options
-    chrome_options = Options()
-    chrome_options.add_argument("--headless")  # Run in headless mode
-    chrome_options.add_argument("--disable-gpu")
-    chrome_options.add_argument("--no-sandbox")
-    chrome_options.add_argument("--ignore-certificate-errors")
-    chrome_options.add_argument("--ignore-ssl-errors")
-    chrome_options.add_argument("--enable-unsafe-swiftshader")
-    
-    return webdriver.Chrome(
-        service=Service(
-            ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()
-        ),
-        options=chrome_options,
-    )
-
 def body_content(html_content):
     soup = BeautifulSoup(html_content, 'html.parser')
     body = soup.body
@@ -71,7 +53,7 @@ def csv_opener(csv_file):
 def URL_parser(url: str) -> str:
 
     # Set up the Chrome driver
-    driver = get_driver()
+    driver = main.get_driver()
 
     try:
         driver.get(url)

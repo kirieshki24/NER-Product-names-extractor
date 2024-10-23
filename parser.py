@@ -11,12 +11,8 @@ from webdriver_manager.core.os_manager import ChromeType
 def get_driver():
     # Set up Chrome options
     chrome_options = Options()
-    chrome_options.add_argument("--headless")  # Run in headless mode
+    chrome_options.add_argument("--headless=new")  # Run in headless mode
     chrome_options.add_argument("--disable-gpu")
-    chrome_options.add_argument("--no-sandbox")
-    chrome_options.add_argument("--ignore-certificate-errors")
-    chrome_options.add_argument("--ignore-ssl-errors")
-    chrome_options.add_argument("--enable-unsafe-swiftshader")
     
     return webdriver.Chrome(
         service=Service(

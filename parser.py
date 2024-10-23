@@ -67,10 +67,16 @@ def csv_opener(csv_file):
     return data_list
 
 def URL_parser(url: str) -> str:
-    
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")  # Run in headless mode
+    chrome_options.add_argument("--disable-gpu")
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--ignore-certificate-errors")
+    chrome_options.add_argument("--ignore-ssl-errors")
+    chrome_options.add_argument("--enable-unsafe-swiftshader")
 
     # Set up the Chrome driver
-    driver = get_driver()
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
 
     try:
         driver.get(url)

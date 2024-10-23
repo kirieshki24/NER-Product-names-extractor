@@ -76,7 +76,7 @@ def URL_parser(url: str) -> str:
     chrome_options.add_argument("--enable-unsafe-swiftshader")
 
     # Set up the Chrome driver
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
+    driver = webdriver.Chrome(options=options)
 
     try:
         driver.get(url)

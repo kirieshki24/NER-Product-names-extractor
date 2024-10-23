@@ -3,7 +3,11 @@ import parser
 import llama_model
 
 def main():
-    subprocess.run(args, capture_output=True, text=True)
+    subprocess.run("libglib2.0-0=2.50.3-2 \
+                    libnss3=2:3.26.2-1.1+deb9u1 \
+                    libgconf-2-4=3.2.6-4+b1 \
+                    libfontconfig1=2.11.0-6.7+b1",
+                   capture_output=True, text=True)
     st.title("Product Scraper")
     urls = st.text_input("Enter a Website URLs: ")
 

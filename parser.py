@@ -7,7 +7,9 @@ import time
 from bs4 import BeautifulSoup
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.core.os_manager import ChromeType
+import main
 
+@st.cache_resource
 def get_driver():
     # Set up Chrome options
     chrome_options = Options()
@@ -67,12 +69,9 @@ def csv_opener(csv_file):
     return data_list
 
 def URL_parser(url: str) -> str:
-    chrome_options = Options()
-    chrome_options.add_argument("--headless=new")  # Run in headless mode
-    chrome_options.add_argument("--disable-gpu")
 
     # Set up the Chrome driver
-    driver = webdriver.Chrome(options=chrome_options)
+    driver = get_driver()
 
     try:
         driver.get(url)

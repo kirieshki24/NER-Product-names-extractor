@@ -6,8 +6,8 @@ def products_from_url_sga(url, prompt = "Find all product names on the website o
         # Define the configuration for the scraping pipeline
         graph_config = {
             "llm": {
-                "api_key": "AIzaSyCfwYRE76eXT6s2SRpAYqe6IcEW1bxiYW4",
-                "model": "google_genai/gemini-pro",  # Use a correct and supported model
+                "api_key": "",
+                "model": "google_genai/gemini-pro",
                 "rate_limit": {
                 "requests_per_second": 1
             }
